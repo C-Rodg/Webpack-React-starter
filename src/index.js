@@ -1,7 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
 
-import App from "./components/App";
+//import App from "./components/App";
+import AppWithRouter from "./components/AppWithRouter";
 import "./styles/default.css";
 
-render(<App />, document.getElementById("root"));
+render(<AppWithRouter />, document.getElementById("root"));

@@ -4,8 +4,7 @@
 	"description": "A webpack, react, react-router starter template.",
 	"main": "index.js",
 	"scripts": {
-		"dev":
-			"webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
+		"dev": "webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
 		"build": "webpack --config webpack.build.config.js",
 		"watch": "webpack --config webpack.build.config.js --watch"
 	},
@@ -13,7 +12,12 @@
 		"type": "git",
 		"url": "git+https://github.com/C-Rodg/Webpack-React-starter.git"
 	},
-	"keywords": ["React", "Webpack", "React-Router", "Javascript"],
+	"keywords": [
+		"React",
+		"Webpack",
+		"React-Router",
+		"Javascript"
+	],
 	"author": "C-Rodg",
 	"license": "MIT",
 	"bugs": {
@@ -25,6 +29,8 @@
 		"moment": "^2.20.1",
 		"react": "^16.2.0",
 		"react-dom": "^16.2.0",
+		"react-router": "^4.2.0",
+		"react-router-dom": "^4.2.2",
 		"styled-components": "^2.4.0"
 	},
 	"devDependencies": {
