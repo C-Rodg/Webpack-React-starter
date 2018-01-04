@@ -1,6 +1,7 @@
 const webpack = require("webpack"),
 	path = require("path"),
-	HtmlWebpackPlugin = require("html-webpack-plugin");
+	HtmlWebpackPlugin = require("html-webpack-plugin"),
+	package = require("./package.json");
 
 const SRC_DIR = path.resolve(__dirname, "src");
 const OUTPUT_DIR = path.resolve(__dirname, "dist");
@@ -8,11 +9,15 @@ const OUTPUT_DIR = path.resolve(__dirname, "dist");
 const defaultInclude = [SRC_DIR];
 
 module.exports = {
-	entry: SRC_DIR + "/index.js",
+	target: "web",
+	entry: {
+		app: SRC_DIR + "/index.js",
+		vendor: Object.keys(package.dependencies)
+	},
 	output: {
 		path: OUTPUT_DIR,
 		publicPath: "/",
-		filename: "bundle.js"
+		filename: "[name].bundle.js"
 	},
 	module: {
 		rules: [
@@ -40,11 +45,17 @@ module.exports = {
 			}
 		]
 	},
-	target: "web",
 	plugins: [
+		new webpack.optimize.CommonsChunkPlugin({
+			name: "vendor",
+			minChunks: Infinity
+		}),
 		new HtmlWebpackPlugin({
+			title: "Webpack React starter",
+			filename: "./index.html",
 			favicon: "./src/assets/favicon.ico",
-			title: "Webpack React starter"
+			template: "./src/index.html",
+			chunks: ["vendor", "app"]
 		}),
 		new webpack.DefinePlugin({
 			"process.env.NODE_ENV": JSON.stringify("development")
