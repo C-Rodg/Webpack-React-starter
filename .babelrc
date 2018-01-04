@@ -1,0 +1,4 @@
+{
+	"presets": ["minify", "react", "env"],
+	"plugins": ["transform-class-properties"]
+}
