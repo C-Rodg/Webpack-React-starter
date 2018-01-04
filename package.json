@@ -1,0 +1,45 @@
+{
+	"name": "webpack-react-starter",
+	"version": "1.0.0",
+	"description": "A webpack, react, react-router starter template.",
+	"main": "index.js",
+	"scripts": {
+		"dev":
+			"webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
+		"build": "webpack --config webpack.build.config.js",
+		"watch": "webpack --config webpack.build.config.js --watch"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/C-Rodg/Webpack-React-starter.git"
+	},
+	"keywords": ["React", "Webpack", "React-Router", "Javascript"],
+	"author": "C-Rodg",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/C-Rodg/Webpack-React-starter/issues"
+	},
+	"homepage": "https://github.com/C-Rodg/Webpack-React-starter#readme",
+	"dependencies": {
+		"axios": "^0.17.1",
+		"moment": "^2.20.1",
+		"react": "^16.2.0",
+		"react-dom": "^16.2.0",
+		"styled-components": "^2.4.0"
+	},
+	"devDependencies": {
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.2",
+		"babel-plugin-transform-class-properties": "^6.24.1",
+		"babel-preset-env": "^1.6.1",
+		"babel-preset-minify": "^0.2.0",
+		"babel-preset-react": "^6.24.1",
+		"css-loader": "^0.28.7",
+		"extract-text-webpack-plugin": "^3.0.2",
+		"file-loader": "^1.1.6",
+		"html-webpack-plugin": "^2.30.1",
+		"style-loader": "^0.19.1",
+		"webpack": "^3.10.0",
+		"webpack-dev-server": "^2.9.7"
+	}
+}
