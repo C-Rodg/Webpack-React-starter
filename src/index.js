@@ -1,8 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
 
-//import App from "./components/App";
-import AppWithRouter from "./components/AppWithRouter";
+//import App from "./components/App";                                   // REACT APP
+//import AppWithRouter from "./components/AppWithRouter";               // REACT APP WITH ROUTER
+import AppWithRouterRedux from "./components/AppWithRouterRedux";       // REACT APP WITH ROUTER & REDUX
 import "./styles/default.css";
 
-render(<AppWithRouter />, document.getElementById("root"));
+render(<AppWithRouterRedux />, document.getElementById("root"));

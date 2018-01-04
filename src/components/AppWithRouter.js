@@ -1,6 +1,6 @@
 import React from "react";
-import { HashRouter as Router, Route, Link } from "react-router-dom";
-// vs BrowserRouter
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// vs BrowserRouter vs HashRouter
 
 const AppWithRouter = () => (
 	<Router>

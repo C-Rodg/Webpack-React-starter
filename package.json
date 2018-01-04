@@ -26,17 +26,22 @@
 	"homepage": "https://github.com/C-Rodg/Webpack-React-starter#readme",
 	"dependencies": {
 		"axios": "^0.17.1",
+		"history": "^4.7.2",
 		"moment": "^2.20.1",
 		"react": "^16.2.0",
 		"react-dom": "^16.2.0",
+		"react-redux": "^5.0.6",
 		"react-router": "^4.2.0",
 		"react-router-dom": "^4.2.2",
+		"react-router-redux": "^5.0.0-alpha.9",
+		"redux": "^3.7.2",
 		"styled-components": "^2.4.0"
 	},
 	"devDependencies": {
 		"babel-core": "^6.26.0",
 		"babel-loader": "^7.1.2",
 		"babel-plugin-transform-class-properties": "^6.24.1",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
 		"babel-preset-env": "^1.6.1",
 		"babel-preset-minify": "^0.2.0",
 		"babel-preset-react": "^6.24.1",
