@@ -1,23 +1,22 @@
 // Sample state & single reducer
 const INITIAL_STATE = {
-    eventName: "Webpack React Redux"
+	eventName: "Webpack React Redux"
 };
 
 const reducerSample = (state = INITIAL_STATE, action) => {
-    switch(action.type) {
-        case 'FOO':
-            return {
-                ...state,
-                eventName: action.payload
-            };
-    }
-    console.log(state);
-    return state;
+	switch (action.type) {
+		case "FOO":
+			return {
+				...state,
+				eventName: action.payload
+			};
+	}
+	return state;
 };
 
 // Main reducers object
 const reducers = {
-    reducerA : reducerSample
+	reducerA: reducerSample
 };
 
 export default reducers;
