@@ -46,9 +46,15 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new webpack.DefinePlugin({
+			"process.env.NODE_ENV": JSON.stringify("development")
+		}),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: "vendor",
-			minChunks: Infinity
+			filename: "vendor.[chunkhash].js",
+			minChunks(module) {
+				return module.context && module.context.indexOf("node_modules") >= 0;
+			}
 		}),
 		new HtmlWebpackPlugin({
 			title: "Webpack React starter",
@@ -56,9 +62,6 @@ module.exports = {
 			favicon: "./src/assets/favicon.ico",
 			template: "./src/index.html",
 			chunks: ["vendor", "app"]
-		}),
-		new webpack.DefinePlugin({
-			"process.env.NODE_ENV": JSON.stringify("development")
 		})
 	],
 	devtool: "cheap-source-map",

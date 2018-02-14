@@ -2,7 +2,8 @@ const webpack = require("webpack"),
 	path = require("path"),
 	HtmlWebpackPlugin = require("html-webpack-plugin"),
 	ExtractTextPlugin = require("extract-text-webpack-plugin"),
-	package = require("./package.json");
+	package = require("./package.json"),
+	StyleExtHtmlWebpackPlugin = require("style-ext-html-webpack-plugin");
 
 const SRC_DIR = path.resolve(__dirname, "src");
 const OUTPUT_DIR = path.resolve(__dirname, "dist");
@@ -50,23 +51,54 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new webpack.DefinePlugin({
+			"process.env.NODE_ENV": JSON.stringify("production")
+		}),
+		new webpack.optimize.ModuleConcatenationPlugin(),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: "vendor",
-			minChunks: Infinity
+			filename: "vendor.[chunkhash].js",
+			minChunks(module) {
+				return module.context && module.context.indexOf("node_modules") >= 0;
+			}
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				warnings: false,
+				screw_ie8: true,
+				conditionals: true,
+				unused: true,
+				comparisons: true,
+				sequences: true,
+				dead_code: true,
+				evaluate: true,
+				if_return: true,
+				join_vars: true
+			},
+			output: {
+				comments: false
+			}
 		}),
 		new HtmlWebpackPlugin({
 			title: "Webpack React starter",
 			filename: "./index.html",
 			favicon: "./src/assets/favicon.ico",
 			template: "./src/index.html",
-			chunks: ["vendor", "app"]
+			chunks: ["vendor", "app"],
+			minify: {
+				collapseWhitespace: true,
+				collapseInlineTagWhitespace: true,
+				removeComments: true,
+				removeRedundantAttributes: true
+			}
 		}),
-		new ExtractTextPlugin("bundle.css"),
-		new webpack.DefinePlugin({
-			"process.env.NODE_ENV": JSON.stringify("production")
+		new ExtractTextPlugin({
+			filename: "[name].[contenthash].css",
+			allChunks: true
 		}),
-		new webpack.optimize.ModuleConcatenationPlugin(),
-		new webpack.optimize.UglifyJsPlugin()
+		new StyleExtHtmlWebpackPlugin({
+			minify: true
+		})
 	],
 	stats: {
 		colors: true,
