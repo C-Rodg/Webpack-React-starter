@@ -56,6 +56,10 @@ module.exports = {
 				return module.context && module.context.indexOf("node_modules") >= 0;
 			}
 		}),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: "runtime",
+			minChunks: Infinity
+		}),
 		new HtmlWebpackPlugin({
 			title: "Webpack React starter",
 			filename: "./index.html",
